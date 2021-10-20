@@ -322,8 +322,15 @@ function getImg(box){
 
     let country = box.getAttribute("data-country");
 
+    // fetch(`./assets/img/${country}/`).then(response => {
+    //     return response.blob()
+    // }).then(data => {
+    //     const imageObjectURL = URL.createObjectURL(data);
+    //     console.log(imageObjectURL);
+    // })
+
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", `./assets/img/${country}`, true);
+    xhr.open("GET", `https://florentmolle.github.io/site-nelson/assets/img/${country}`, true);
     xhr.responseType = 'document';
     xhr.onload = () => {
     if (xhr.status === 200) {
