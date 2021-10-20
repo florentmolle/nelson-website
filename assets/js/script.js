@@ -330,7 +330,7 @@ function getImg(box){
     // })
 
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", `https://florentmolle.github.io/site-nelson/assets/img/${country}`, true);
+    xhr.open("GET", `./assets/img/${country}`, true);
     xhr.responseType = 'document';
     xhr.onload = () => {
     if (xhr.status === 200) {
@@ -646,25 +646,29 @@ function mySdTimer(){
     slideTransitionThree.style.transition = '.7s ease';
     slideTransitionThree.style.width = '100%';
 
-    setTimeout(()=>{
-        currentSdImg >=13 ? currentSdImg = 1 : currentSdImg +=1;
+    if(window.matchMedia("(max-width: 768px)").matches){
 
-        fetch(`./assets/img/smalldevice/${currentSdImg}.jpg`).then(response =>{
-            return response.blob();
-        }).then(myblob=>{
-            let sdImgUrl = URL.createObjectURL(myblob)
-            sdSlideshowImg.src = sdImgUrl;
-        });
-        slideTransition.style.transition = '.7s ease-in';
-        slideTransition.style.width = '0%';
-        slideTransitionTwo.style.transition = '.7s var(--ease-out)';
-        slideTransitionTwo.style.width = '0%';
-        slideTransitionThree.style.transition = '.7s ease';
-        slideTransitionThree.style.width = '0%';
+        setTimeout(()=>{
+            currentSdImg >=13 ? currentSdImg = 1 : currentSdImg +=1;
 
-    }, 700)
+            fetch(`./assets/img/smalldevice/${currentSdImg}.jpg`).then(response =>{
+                return response.blob();
+            }).then(myblob=>{
+                let sdImgUrl = URL.createObjectURL(myblob)
+                sdSlideshowImg.src = sdImgUrl;
+            });
+            slideTransition.style.transition = '.7s ease-in';
+            slideTransition.style.width = '0%';
+            slideTransitionTwo.style.transition = '.7s var(--ease-out)';
+            slideTransitionTwo.style.width = '0%';
+            slideTransitionThree.style.transition = '.7s ease';
+            slideTransitionThree.style.width = '0%';
+
+            console.log('yeeyey');
+
+        }, 700)
     
-
+    }
 };
 
 
