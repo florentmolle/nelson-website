@@ -1,0 +1,27 @@
+{
+    "data":{
+        "about":{
+            "title": "About",
+            "name": "Nelson Thaksakorn",
+            "textone": "Nelson Thaksakorn is a photographer based in Bangkok, Thailand.",
+            "texttwo" : "He passionates in travel, landscape, aerial, astrophotography and moodyscape, never stop to challenging the boundaries of creativity as well as a flair for coming up with unique ideas.",
+            "textthree": "He loves to capture moments of nature and finds the beauty in the usual.",
+            "textfour": " Mostly inspired by music, contemporary fine art, nature and traveling, his photos are presented almost as stills from something out of a movie or a dream."
+        },
+        "contact":{
+            "title": "Contact",
+            "name": "Contact me",
+            "textone": "social media, mail etc...",
+            "texttwo": ""
+        },
+        "gallery":{
+            "iceland" : "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+            "europe" : " Suscipit vitae earum non minus voluptatem quasi.",
+            "thailand" : "Adipisci ipsam! Quod sunt repellat explicabo modi.",
+            "japan" : " Quia, deleniti dicta similique.",
+            "scandinavia" : "Placeat eligendi quis dolor.",
+            "indonesia" : "Sit amet consectetur adipisicing elit."
+        }
+
+    }
+}
