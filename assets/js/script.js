@@ -316,18 +316,13 @@ galleryInnerslideBox.forEach((b)=>{
 
 // ------ check country clicked to fetch the good images ---- //
 
+let galImgArray = [];
+
 function getImg(box){
 
     let innerBox;
 
     let country = box.getAttribute("data-country");
-
-    // fetch(`./assets/img/${country}/`).then(response => {
-    //     return response.blob()
-    // }).then(data => {
-    //     const imageObjectURL = URL.createObjectURL(data);
-    //     console.log(imageObjectURL);
-    // })
 
     var xhr = new XMLHttpRequest();
     xhr.open("GET", `./assets/img/${country}`, true);
@@ -355,6 +350,7 @@ function getImg(box){
     }
     xhr.send()
 }
+
 
 
 // click event for each category of images in gallery
