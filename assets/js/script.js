@@ -316,40 +316,114 @@ galleryInnerslideBox.forEach((b)=>{
 
 // ------ check country clicked to fetch the good images ---- //
 
-let galImgArray = [];
+//new way of store img
+let europeArray = [];
+let europeCount = 15;
+let icelandArray = [];
+let icelandCount = 25;
+let indonesiaArray = [];
+let indonesiaCount = 17;
+let japanArray = [];
+let japanCount = 7;
+let scandinaviaArray = [];
+let scandinaviaCount = 19;
+let thailandArray = [];
+let thailandCount = 35;
+let currentArray;
+
+
+function fillArrayWithImg(array, count, country){
+    for(let i = 1; i < count; i ++){
+        let newImg = new Image();
+        newImg.src = `./assets/img/${country}/${i}.jpg`;
+        array.push(newImg);
+    };
+};
+fillArrayWithImg(europeArray, europeCount, 'europe');
+fillArrayWithImg(icelandArray, icelandCount, 'iceland');
+fillArrayWithImg(indonesiaArray, indonesiaCount, 'indonesia');
+fillArrayWithImg(japanArray, japanCount, 'japan');
+fillArrayWithImg(scandinaviaArray, scandinaviaCount, 'scandinavia');
+fillArrayWithImg(thailandArray, thailandCount, 'thailand');
 
 function getImg(box){
 
-    let innerBox;
 
+    let innerBox;
     let country = box.getAttribute("data-country");
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", `./assets/img/${country}`, true);
-    xhr.responseType = 'document';
-    xhr.onload = () => {
-    if (xhr.status === 200) {
-        var elements = xhr.response.getElementsByTagName("a");
-        for (x of elements) {
-        if ( x.href.match(/\.(jpe?g|png|gif)$/) ) { 
-            let img = document.createElement("img");
-            img.src = x.href;
-            innerBox = document.createElement('div');
-            innerBox.className = 'popup-innerbox';
-            innerBox.innerHTML = `
-                <div><img src=${x.href}></img></div>
-            `
-            popupScrollable.appendChild(innerBox);
-            initPopup();
-        } 
-        };
-    } 
-        else {
-            alert('cant find images' + xhr.status);
-        }
+    if(country == 'europe'){
+        currentArray = europeArray
     }
-    xhr.send()
-}
+    if(country == 'iceland'){
+        currentArray = icelandArray
+    }
+    if(country == 'indonesia'){
+        currentArray = indonesiaArray
+    }
+    if(country == 'japan'){
+        currentArray = japanArray
+    }
+    if(country == 'scandinavia'){
+        currentArray = scandinaviaArray
+    }
+    if(country == 'thailand'){
+        currentArray = thailandArray
+    }
+
+    for(let i = 0; i < currentArray.length; i ++){
+        innerBox = document.createElement('div');
+        innerBox.className = 'popup-innerbox';
+        innerBox.innerHTML = `
+            <div><img src=${currentArray[i].src}></img></div>
+        `
+        popupScrollable.appendChild(innerBox);
+        initPopup();
+    };
+};
+
+
+
+
+//oldway not working 100%
+let galImgArray = [];
+
+// function getImg(box){
+
+//     let innerBox;
+
+//     let country = box.getAttribute("data-country");
+
+//     var xhr = new XMLHttpRequest();
+//     xhr.open("GET", `./assets/img/${country}`, true);
+//     xhr.responseType = 'document';
+//     xhr.onload = () => {
+//     if (xhr.status === 200) {
+//         var elements = xhr.response.getElementsByTagName("a");
+//         for (x of elements) {
+//         if ( x.href.match(/\.(jpe?g|png|gif)$/) ) { 
+//             let img = document.createElement("img");
+//             img.src = x.href;
+//             innerBox = document.createElement('div');
+//             innerBox.className = 'popup-innerbox';
+//             innerBox.innerHTML = `
+//                 <div><img src=${x.href}></img></div>
+//             `
+//             popupScrollable.appendChild(innerBox);
+//             initPopup();
+//         } 
+//         };
+//     } 
+//         else {
+//             alert('cant find images' + xhr.status);
+//         }
+//     }
+//     xhr.send()
+// }
+
+
+
+
 
 
 
@@ -445,7 +519,7 @@ closePopup.addEventListener('click', ()=>{
     let popupinnerBox = document.querySelectorAll('.popup-innerbox');
     popupinnerBox.forEach((b)=>{
         b.remove();
-    })
+    });
 
     setTimeout(()=>{
         galleryPagePopup.style.display = 'none';
@@ -455,6 +529,7 @@ closePopup.addEventListener('click', ()=>{
         document.body.style.height = '100vh';
         target = 0;
         current = 0;
+        currentArray = [];
     }, 300)
 });
 

@@ -208,6 +208,7 @@ h1{
     left: 0;
     overflow: hidden;
     will-change: transform;
+    pointer-events: none;
 }
 .homepage-imgbox{
     position: relative;
